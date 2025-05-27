@@ -1,10 +1,11 @@
-/*
- * @Author: Jh Li
- * @github: https://github.com/Aptx4869AC
- * @Created: 2024-01-11
- */
+/******************************************************************************
+ * Author: Aptx4869AC
+ * Created: 2024-01-11
+ * GitHub: https://github.com/Aptx4869AC
+ *****************************************************************************/
 
 #include <stdio.h>
+
 #if defined(_MSC_VER)
 #include <intrin.h>
 #endif
@@ -12,27 +13,27 @@
 static inline void native_cpuid(unsigned int *eax, unsigned int *ebx,
                                 unsigned int *ecx, unsigned int *edx)
 {
-        /* ecx is often an input as well as an output. */
-        
-	#if !defined(_MSC_VER)
+    /* ecx is often an input as well as an output. */
 
-	    asm volatile("cpuid"
-		         : "=a" (*eax),
-		         "=b" (*ebx),
-		         "=c" (*ecx),
-		         "=d" (*edx)
-		         : "0" (*eax), "2" (*ecx));
+#if !defined(_MSC_VER)
 
-	#else
-	    int registers[4] = {0,0,0,0};
+    asm volatile("cpuid"
+            : "=a" (*eax),
+    "=b" (*ebx),
+    "=c" (*ecx),
+    "=d" (*edx)
+            : "0" (*eax), "2" (*ecx));
 
-	    __cpuidex(registers, *eax, *ecx);
-	    *eax = registers[0];
-	    *ebx = registers[1];
-	    *ecx = registers[2];
-	    *edx = registers[3];
+#else
+    int registers[4] = {0,0,0,0};
 
-	#endif
+    __cpuidex(registers, *eax, *ecx);
+    *eax = registers[0];
+    *ebx = registers[1];
+    *ecx = registers[2];
+    *edx = registers[3];
+
+#endif
 }
 
 int main(int argc, char **argv)
@@ -95,16 +96,16 @@ int main(int argc, char **argv)
     printf("eax: %x ebx: %x ecx: %x edx: %x\n", eax, ebx, ecx, edx);
 
     int i;
-    for (i=2; i<10; i++)
+    for (i = 2; i < 10; i++)
     {
         /* CPUID Leaf 12H, Sub-Leaf i Enumeration of Intel SGX Capabilities (EAX=12H,ECX=i) */
-        printf("\nCPUID Leaf 12H, Sub-Leaf %d of Intel SGX Capabilities (EAX=12H,ECX=%d)\n",i,i);
+        printf("\nCPUID Leaf 12H, Sub-Leaf %d of Intel SGX Capabilities (EAX=12H,ECX=%d)\n", i, i);
         eax = 0x12;
         ecx = i;
         native_cpuid(&eax, &ebx, &ecx, &edx);
         printf("eax: %x ebx: %x ecx: %x edx: %x\n", eax, ebx, ecx, edx);
         printf("size of EPC section in Processor Reserved Memory, %d M\n",
-               (eax & 0xF) == 1? (((edx&0xFFFFF) << 12) + (ecx >> 20)): 0);
+               (eax & 0xF) == 1 ? (((edx & 0xFFFFF) << 12) + (ecx >> 20)) : 0);
     }
 }
 

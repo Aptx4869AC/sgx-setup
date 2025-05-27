@@ -1,7 +1,8 @@
-/*
- * @Author: Jh Li
- * @Created: 2024-01-11
- */
+/******************************************************************************
+ * Author: Aptx4869AC
+ * Created: 2024-01-11
+ * GitHub: https://github.com/Aptx4869AC
+ *****************************************************************************/
 
 #ifndef _APP_H_
 #define _APP_H_
@@ -11,8 +12,8 @@
 #include <stdlib.h>
 #include <stdarg.h>
 
-#include "sgx_error.h"	/* sgx_status_t */
-#include "sgx_eid.h"	/* sgx_enclave_id_t */
+#include "sgx_error.h"    /* sgx_status_t */
+#include "sgx_eid.h"    /* sgx_enclave_id_t */
 
 #ifndef TRUE
 # define TRUE 1
@@ -25,7 +26,7 @@
 # define TOKEN_FILENAME   "enclave.token"
 # define ENCLAVE_FILENAME "enclave.signed.so"
 
-extern sgx_enclave_id_t global_eid;	/* global enclave id */
+extern sgx_enclave_id_t global_eid;    /* global enclave id */
 
 #if defined(__cplusplus)
 extern "C" {

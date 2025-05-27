@@ -1,8 +1,8 @@
-/*
- * @Author: Jh Li
- * @github: https://github.com/Aptx4869AC
- * @Created: 2024-01-11
- */
+/******************************************************************************
+ * Author: Aptx4869AC
+ * Created: 2024-01-11
+ * GitHub: https://github.com/Aptx4869AC
+ *****************************************************************************/
 
 #include "Enclave.h"
 #include "Enclave_t.h" /* print_string */

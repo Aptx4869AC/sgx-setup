@@ -1,8 +1,8 @@
-/*
- * @Author: Jh Li
- * @github: https://github.com/Aptx4869AC
- * @Created: 2024-01-11
- */
+/******************************************************************************
+ * Author: Aptx4869AC
+ * Created: 2024-01-11
+ * GitHub: https://github.com/Aptx4869AC
+ *****************************************************************************/
 
 #ifndef _ENCLAVE_H_
 #define _ENCLAVE_H_
@@ -14,8 +14,8 @@
 extern "C" {
 #endif
 
-int printf(const char* fmt, ...);
-void Add(int *res,int a,int b);
+int printf(const char *fmt, ...);
+void Add(int *res, int a, int b);
 
 #if defined(__cplusplus)
 }
