@@ -62,3 +62,14 @@ make SGX_MODE=SIM  # simulation mode
 ```
 
  ![image-20250527103427057](README.assets/image-20250527103427057.png)
+
+
+
+## License
+
+If you found this useful, I'd greatly appreciate a **Star ⭐** to show your support!  It helps others discover this project too. 
+
+Copyright :copyright:2024 [Aptx4869AC](https://github.com/Aptx4869AC)
+
+
+
